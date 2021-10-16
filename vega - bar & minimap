@@ -1,47 +1,47 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/dataset.csv"},
-
-  "hconcat": [{
-    "title":"Overview on total medals",
+   "title":"Overview on total medals",
+  "vconcat": [{
+ 
     "mark": "bar",
     "transform": [{
       "filter": {"param": "brush"}
     }],
     "encoding": {
       
-      "y": {
+      "x": {
         "field": "Country",
         "type": "nominal",
         "axis": {"minExtent": 100, "title": null},
-        "sort": "-x"
+        "sort": "-y"
       },
-      "x": {
+      "y": {
         "field":"Total",
         "aggregate": "max",
         "scale":{"domain":  [0, 120]},
-        "axis": {"orient": "top", "title":null}
+        "axis": {"orient": "left", "title":null}
       }
     }
   }, {
-    "height": 200,
-    "width": 80,
+    "height": 50,
+    "width": 1000,
     "params": [{
       "name": "brush",
       "select": {
         "type": "interval",
-        "encodings": ["y"]
+        "encodings": ["x"]
       }
     }],
     "mark": "bar",
     "encoding": {
-      "y": {
+      "x": {
         "field": "Country",
         "type": "nominal",
-        "sort": "-x",
+        "sort": "-y",
         "axis": null
       },
-      "x": {
+      "y": {
         "field":"Total",
         "aggregate": "max",
         "axis": null
