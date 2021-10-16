@@ -19,7 +19,7 @@
     "cursor": "pointer"
   },
   "encoding": {
-    "y": {"field": "Country", "type": "ordinal","sort":""},
+    "y": {"field": "Country", "type": "ordinal","sort":"-x"},
     "x": {"field": "Gold", "type": "quantitative"},
     "fillOpacity": {
       "condition": {"param": "select", "value": 1},
