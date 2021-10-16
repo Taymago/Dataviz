@@ -1,6 +1,12 @@
 {
 "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-"title": "Tokyo Olympics 2020",
+"title": {
+  "text": "Tokyo Olympics 2020",
+   "color":"black",
+   "fontSize":28,
+   "subtitle":"This webpage showcases the results from different countries in the most recent olympic games",
+   "subtitleFontSize":20
+   },
 "width": 850,
 "height": 600,
 "projection": {"type": "equirectangular"},
@@ -26,7 +32,7 @@
     "type": "quantitative",
     "scale": {"type": "threshold",
     "domain":[5,20,50,100],
-    "range": ["#000000", "#F4C300","#0085C7", "#DF0024", "#009F3D"]}
+    "range": ["#d0a9a0","#c35a66", "#8f3a60", "#740211", "#57394a"]}
   },
   "tooltip": [
 {"field": "properties.NAME", "type": "nominal", "title": "Country"},
