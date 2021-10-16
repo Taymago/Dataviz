@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 - Gold",
+  "data": {"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/top10.csv"},
+ 
+
+ "hconcat" : [{
+    "params": [
+    {
+      "name": "highlight",
+      "select": {"type": "point", "on": "mouseover"}
+    },
+    {"name": "select", "select": "point"}
+  ],
+  "mark": {
+    "type": "bar",
+    "fill": "#bc9928",
+    "stroke": "black",
+    "cursor": "pointer"
+  },
+  "encoding": {
+    "y": {"field": "Country", "type": "ordinal","sort":""},
+    "x": {"field": "Gold", "type": "quantitative"},
+    "fillOpacity": {
+      "condition": {"param": "select", "value": 1},
+      "value": 0.3
+    },
+    "strokeWidth": {
+      "condition": [
+        {
+          "param": "select",
+          "empty": false,
+          "value": 2
+        },
+        {
+          "param": "highlight",
+          "empty": false,
+          "value": 1
+        }
+      ],
+      "value": 0
+    }
+  },
+  "config": {
+    "scale": {
+      "bandPaddingInner": 0.2
+    }
+  }
+  
+}
+]
+}
