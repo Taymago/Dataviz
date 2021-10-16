@@ -1,2 +1,0 @@
-# taymago.github.io
-Dataviz
