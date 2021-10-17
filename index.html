@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vega-Lite Bar Chart</title>
-    <meta charset="utf-8" />
-
+    <title>Embedding Vega-Lite</title>
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
-
-    <style media="screen">
-      /* Add space between Vega-Embed links  */
-      .vega-actions a {
-        margin-right: 5px;
-      }
-    </style>
   </head>
   <body>
-    <h1>Template for Embedding Vega-Lite Visualization</h1>
-    <!-- Container for the visualization -->
     <div id="vis"></div>
 
-    <script>
-      // Assign the specification to a local variable vlSpec.
-      var vlSpec = {
-        $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
-        data: {
-          values: [
-            {a: 'C', b: 2},
-            {a: 'C', b: 7},
-            {a: 'C', b: 4},
-            {a: 'D', b: 1},
-            {a: 'D', b: 2},
-            {a: 'D', b: 6},
-            {a: 'E', b: 8},
-            {a: 'E', b: 4},
-            {a: 'E', b: 7}
-          ]
+    <script type="text/javascript">
+      
+      var yourVlSpec = {
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"title": {
+  "text": "Tokyo Olympics 2020",
+   "color":"black",
+   "fontSize":28,
+   "subtitle":"This webpage will showcases the results from different countries in the most recent olympic game",
+   "subtitleFontSize":20
+   },
+"width": 850,
+"height": 600,
+"projection": {"type": "equirectangular"},
+"data": {
+"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/world.topojson",
+    "format": {"type": "topojson", "feature": "world"}
+  },
+  "transform": [
+    {
+"lookup": "properties.NAME",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/dataset.csv"
         },
-        mark: 'bar',
-        encoding: {
-          y: {field: 'a', type: 'nominal'},
-          x: {
-            aggregate: 'average',
-            field: 'b',
-            type: 'quantitative',
-            axis: {
-              title: 'Average of b'
-            }
-          }
-        }
+        "key": "Country",
+        "fields": ["Total"]
+} },
+{"calculate": "datum.Total", "as": "Total"} ],
+  "mark": {"type": "geoshape"},
+"encoding": {
+  "color": {
+    "field": "Total",
+    "type": "quantitative",
+    "scale": {"type": "threshold",
+    "domain":[5,20,50,100],
+    "range": ["#d0a9a0","#c35a66", "#8f3a60", "#740211", "#57394a"]}
+  },
+  "tooltip": [
+{"field": "properties.NAME", "type": "nominal", "title": "Country"},
+{"field": "Total", "type": "quantitative","title":"Total Medals"}]
+}
       };
-
-      // Embed the visualization in the container with id `vis`
-      vegaEmbed('#vis', vlSpec);
+      vegaEmbed('#vis', yourVlSpec);
     </script>
   </body>
 </html>
