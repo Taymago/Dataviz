@@ -57,7 +57,8 @@
       
       
       var medal = {
-        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Top 10 Medals",
     "fontSize" : 20,
@@ -65,6 +66,9 @@
   },
   "data": {"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/top10.csv"},
  
+
+ "vconcat": [{
+
  "hconcat": [{
 
 
@@ -196,15 +200,10 @@
   
 }
 ]
-}
-]};
-      
-      
-      
-      
-      
-      var bar = { "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/dataset.csv"},
+},
+{
+
+"data": {"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/dataset.csv"},
    "title":{
      "text": "Total medals comparison",
      "anchor": "middle",
@@ -256,14 +255,24 @@
       }
     }
   }]
-                
-               };
-      
+}
+
+
+
+
+ ]}
+ 
+
+
+  ]}
+        
+        
+      };
+     
       
       
       vegaEmbed('#map', map);
       vegaEmbed('#medal', medal);
-      vegaEmbed('#bar', bar);
       
       
     </script>
