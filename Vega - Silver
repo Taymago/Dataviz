@@ -1,10 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top 10 - Silver",
+  "title": {
+    "text": "Top 10 Medals",
+    "anchor": "middle"
+  },
   "data": {"url": "https://raw.githubusercontent.com/taymago/dataviz/main/data/top10.csv"},
  
 
  "hconcat" : [{
+   "title":"Silver",
     "params": [
     {
       "name": "highlight",
@@ -20,7 +24,7 @@
   },
   "encoding": {
     "y": {"field": "Country", "type": "ordinal","sort":"-x"},
-    "x": {"field": "Silver", "type": "quantitative"},
+    "x": {"field": "Silver", "type": "quantitative","title":"Silver Medals Count"},
     "fillOpacity": {
       "condition": {"param": "select", "value": 1},
       "value": 0.3
@@ -40,13 +44,9 @@
       ],
       "value": 0
     }
-  },
-  "config": {
-    "scale": {
-      "bandPaddingInner": 0.2
-    }
+  }
   }
   
-}
+
 ]
 }
